@@ -37,14 +37,14 @@
         .heart-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 15px; /* Adjust spacing between hearts */
             justify-content: center;
             margin-top: 50px;
         }
 
         .heart {
-            width: 100px;
-            height: 100px;
+            width: 60px; /* Smaller hearts */
+            height: 60px;
             position: relative;
             background-color: #ffccde;
             margin: 10px;
@@ -56,18 +56,18 @@
             content: "";
             position: absolute;
             top: 0;
-            width: 100px;
-            height: 100px;
+            width: 60px; /* Adjust for smaller hearts */
+            height: 60px;
             border-radius: 50%;
             background-color: #ffccde;
         }
 
         .heart:before {
-            left: 50px;
+            left: 30px;
         }
 
         .heart:after {
-            top: 50px;
+            top: 30px;
         }
 
         .heart:hover {
