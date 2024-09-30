@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4 Pics 1 Word</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            color: #ff6347;
+        }
+        .pictures {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .picture {
+            width: 100px;
+            height: 100px;
+            margin: 0 10px;
+            background-size: cover;
+            background-position: center;
+        }
+        #message {
+            font-size: 24px;
+            margin-top: 20px;
+            color: #333;
+            display: none; /* Initially hidden */
+        }
+        #guessInput {
+            padding: 10px;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        #submitBtn {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #ff6347;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #submitBtn:hover {
+            background-color: #ff4500;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Guess the Word!</h1>
+    <div class="pictures">
+        <div class="picture" style="background-image: url('https://via.placeholder.com/100?text=Image1');"></div>
+        <div class="picture" style="background-image: url('https://via.placeholder.com/100?text=Image2');"></div>
+        <div class="picture" style="background-image: url('https://via.placeholder.com/100?text=Image3');"></div>
+        <div class="picture" style="background-image: url('https://via.placeholder.com/100?text=Image4');"></div>
+    </div>
+    <input type="text" id="guessInput" placeholder="Type your guess here..." />
+    <button id="submitBtn">Submit Guess</button>
+    <div id="message"></div>
+
+    <script>
+        const correctAnswer = "LOVE"; // The correct answer (you can change this)
+        
+        document.getElementById('submitBtn').onclick = function() {
+            const userGuess = document.getElementById('guessInput').value.toUpperCase();
+            const messageDiv = document.getElementById('message');
+
+            if (userGuess === correctAnswer) {
+                messageDiv.innerText = "Congratulations! You guessed it: " + correctAnswer + " ❤️";
+            } else {
+                messageDiv.innerText = "Oops! Try again.";
+            }
+            messageDiv.style.display = "block"; // Show the message
+        };
+    </script>
+
+</body>
+</html>
