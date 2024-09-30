@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flipping Circle Messages</title>
+    <title>Flipping Circles Message</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #ffe6f0;
+            background-color: #ffffff; /* White background */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -16,140 +16,151 @@
             flex-direction: column;
         }
 
-        /* Ribbon Styling */
-        .ribbon {
-            width: 100%;
-            height: 20px;
-            background-color: #ff99bb;
-            position: absolute;
-            top: 10px;
-        }
-
-        .ribbon-bottom {
-            width: 100%;
-            height: 20px;
-            background-color: #ff99bb;
-            position: absolute;
-            bottom: 10px;
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px; /* Space between circles */
+            max-width: 800px; /* Maximum width for circles */
         }
 
         /* Circle Styling */
-        .circle-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px; /* Adjust spacing between circles */
-            justify-content: center;
-            margin-top: 50px;
-        }
-
         .circle {
             width: 100px; /* Circle size */
             height: 100px;
-            position: relative;
-            margin: 10px;
-            cursor: pointer;
-            transition: transform 0.6s ease;
-            border-radius: 50%; /* Circle shape */
+            background-color: #ff007f; /* Hot pink circle color */
+            color: #ffffff; /* White text color */
+            border-radius: 50%; /* Makes it a circle */
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #ffccde;
-            color: #ff477e;
-            font-size: 24px; /* Font size for number */
-            backface-visibility: hidden; /* Hides the back side */
+            font-size: 16px; /* Font size for the number */
+            cursor: pointer;
+            transition: transform 0.6s;
+            position: relative;
+            perspective: 1000px; /* For 3D effect */
         }
 
-        .back {
-            background-color: #fff; /* Back color of the circle */
-            color: #ff477e;
-            border: 2px solid #ffccde;
-            border-radius: 50%; /* Circular shape */
+        .circle-inner {
             position: absolute;
-            top: 0;
-            left: 0;
-            transform: rotateY(180deg); /* Back side rotated */
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d; /* Preserve 3D effect */
+        }
+
+        .circle.flipped .circle-inner {
+            transform: rotateY(180deg); /* Flipping effect */
+        }
+
+        /* Front and Back Styling */
+        .circle-front,
+        .circle-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%; /* Circular shape */
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 100px;
-            height: 100px;
-            backface-visibility: hidden; /* Hides the front side */
-            text-align: center;
+        }
+
+        .circle-front {
+            background-color: #ff007f; /* Hot pink front color */
+            color: #ffffff; /* White text color */
+        }
+
+        .circle-back {
+            background-color: #ffffff; /* White back color */
+            color: #ff007f; /* Hot pink text color */
+            transform: rotateY(180deg); /* Back side rotated */
         }
 
         /* Message Styling */
         .message {
-            display: none;
-            font-size: 18px;
-            text-align: center;
-            padding: 20px;
-            background-color: #fff;
-            color: #ff477e;
-            border: 2px solid #ffccde;
-            margin-top: 10px;
+            display: none; /* Initially hidden */
+            background-color: #ffffff; /* White background for the message */
+            color: #ff007f; /* Hot pink text color */
+            padding: 10px;
             border-radius: 10px;
-            max-width: 90%;
-            max-height: 300px; /* Increased height for longer messages */
-            overflow-y: auto; /* Add scroll for long messages */
-        }
-
-        .visible {
-            display: block;
-        }
-
-        .flipped {
-            transform: rotateY(180deg); /* Flipping effect */
+            margin-top: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 90%; /* Max width of the message box */
         }
     </style>
 </head>
 <body>
 
-    <!-- Decorative Ribbons -->
-    <div class="ribbon"></div>
-    <div class="ribbon-bottom"></div>
-
-    <!-- Circle Container -->
-    <div class="circle-container">
-        <div class="circle" id="circle1" onclick="revealMessage(1)">
-            <div>1</div>
-            <div class="back">Message 1: You’re the light of my life!</div>
+    <div class="container">
+        <div class="circle" onclick="revealMessage(this, Hi, love! Happy monthsary. I'm being so careful with this po kasi kanina ko pa nasisira 'tong format and I'm having a hard time po.')">
+            <div class="circle-inner">
+                <div class="circle-front">1</div>
+                <div class="circle-back">Message 1</div>
+            </div>
         </div>
-        <div class="circle" id="circle2" onclick="revealMessage(2)">
-            <div>2</div>
-            <div class="back">Message 2: My world is brighter with you.</div>
+        <div class="circle" onclick="revealMessage(this, I just really want to impress you. But it's so hard that I cried while doing this po, love.)">
+            <div class="circle-inner">
+                <div class="circle-front">2</div>
+                <div class="circle-back">Message 2</div>
+            </div>
         </div>
-        <div class="circle" id="circle3" onclick="revealMessage(3)">
-            <div>3</div>
-            <div class="back">Message 3: I’m so lucky to have you.</div>
+        <div class="circle" onclick="revealMessage(this, I love you so much, love. Happy monthsary po. I hope you stay with me forever and never give up on me)">
+            <div class="circle-inner">
+                <div class="circle-front">3</div>
+                <div class="circle-back">Message 3</div>
+            </div>
         </div>
-        <div class="circle" id="circle4" onclick="revealMessage(4)">
-            <div>4</div>
-            <div class="back">Message 4: Thank you for being amazing!</div>
+        <div class="circle" onclick="revealMessage(this, I know that I'm so pasaway most of the time and I don't listen to you often. I'm so sorry about it love. Promise that me, you won't leave me.)">
+            <div class="circle-inner">
+                <div class="circle-front">4</div>
+                <div class="circle-back">Message 4</div>
+            </div>
         </div>
-        <div class="circle" id="circle5" onclick="revealMessage(5)">
-            <div>5</div>
-            <div class="back">Message 5: You make my heart smile.</div>
+        <div class="circle" onclick="revealMessage(this, Thank you for bearing with me all the time even though I'm so stubborn, you never let your anger eat you. I'm so proud of you, love)">
+            <div class="circle-inner">
+                <div class="circle-front">5</div>
+                <div class="circle-back">Message 5</div>
+            </div>
         </div>
-        <div class="circle" id="circle6" onclick="revealMessage(6)">
-            <div>6</div>
-            <div class="back">Message 6: I love you more than words can say!</div>
+        <div class="circle" onclick="revealMessage(this, Let's celebrate lots of monthsaries together, okay?)">
+            <div class="circle-inner">
+                <div class="circle-front">6</div>
+                <div class="circle-back">Message 6</div>
+            </div>
+        </div>
+        <div class="circle" onclick="revealMessage(this, Can I ask one favor po? Don't judge this, please. I've been editing and doing this and that since 1:00 pm.)">
+            <div class="circle-inner">
+                <div class="circle-front">7</div>
+                <div class="circle-back">Message 7</div>
+            </div>
+        </div>
+        <div class="circle" onclick="revealMessage(this, You always make me feel loved and special. I want to do the same thing to you. I'm sorry if this turn out so bad, love. I love you a lot!)">
+            <div class="circle-inner">
+                <div class="circle-front">8</div>
+                <div class="circle-back">Message 8</div>
+            </div>
+        </div>
+        <div class="circle" onclick="revealMessage(this, Happy monthsary, love!)">
+            <div class="circle-inner">
+                <div class="circle-front">9</div>
+                <div class="circle-back">Message 9</div>
+            </div>
         </div>
     </div>
 
-    <script>
-        function revealMessage(number) {
-            const circle = document.getElementById('circle' + number);
-            const backMessage = circle.querySelector('.back');
-            circle.classList.toggle('flipped'); // Flip the circle
+    <div class="message" id="message" style="display:none;"></div>
 
-            // Show the corresponding message
-            backMessage.style.display = 'flex'; // Display the message
-            backMessage.style.justifyContent = 'center'; // Center the message
-            backMessage.style.alignItems = 'center'; // Center the message
+    <script>
+        function revealMessage(circle, msg) {
+            circle.classList.toggle('flipped'); // Flip the circle
+            const message = document.getElementById('message');
+            message.innerText = msg; // Set the message text
+            message.style.display = 'block'; // Show the message
 
             // Hide the message after 10 seconds
-            setTimeout(function() {
-                backMessage.style.display = 'none'; // Hide the message
+            setTimeout(() => {
+                message.style.display = 'none'; // Hide the message
                 circle.classList.remove('flipped'); // Reset circle after 10 seconds
             }, 10000);
         }
