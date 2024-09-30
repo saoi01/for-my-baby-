@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heart of Messages</title>
+    <title>Flipping Circle Messages</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -33,49 +33,29 @@
             bottom: 10px;
         }
 
-        /* Heart Styling */
-        .heart-container {
+        /* Circle Styling */
+        .circle-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px; /* Adjust spacing between hearts */
+            gap: 30px; /* Adjust spacing between circles */
             justify-content: center;
             margin-top: 50px;
         }
 
-        .heart {
-            width: 100px; /* Larger hearts */
+        .circle {
+            width: 100px; /* Circle size */
             height: 100px;
             position: relative;
-            background-color: #ffccde;
             margin: 10px;
             cursor: pointer;
             transition: transform 0.6s ease;
-            border-radius: 50px 50px 0 0; /* Rounded top */
-            transform: rotate(-45deg);
-            display: inline-block;
-        }
-
-        .heart:before, .heart:after {
-            content: "";
-            position: absolute;
-            width: 100px; /* Match heart size */
-            height: 100px;
-            border-radius: 50%;
             background-color: #ffccde;
-        }
-
-        .heart:before {
-            left: 50px;
-            top: 0;
-        }
-
-        .heart:after {
-            top: 50px;
-            left: 0;
-        }
-
-        .heart:hover {
-            transform: scale(1.1) rotate(-45deg);
+            border-radius: 50%; /* Circle shape */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ff477e;
+            font-size: 24px; /* Font size for number */
         }
 
         .hidden {
@@ -104,7 +84,25 @@
         }
 
         .flipped {
-            transform: rotate(180deg); /* Flipping animation */
+            transform: rotateY(180deg); /* Flipping effect */
+        }
+
+        .circle-inner {
+            position: absolute;
+            backface-visibility: hidden; /* Hides the back side */
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .back {
+            background-color: #fff; /* Back color of the circle */
+            color: #ff477e;
+            border: 2px solid #ffccde;
+            border-radius: 50%; /* Circular shape */
+            transform: rotateY(180deg); /* Back side rotated */
         }
     </style>
 </head>
@@ -114,37 +112,47 @@
     <div class="ribbon"></div>
     <div class="ribbon-bottom"></div>
 
-    <!-- Heart Container -->
-    <div class="heart-container">
-        <div class="heart" id="heart1" onclick="revealMessage(1)"></div>
-        <div class="heart" id="heart2" onclick="revealMessage(2)"></div>
-        <div class="heart" id="heart3" onclick="revealMessage(3)"></div>
-        <div class="heart" id="heart4" onclick="revealMessage(4)"></div>
-        <div class="heart" id="heart5" onclick="revealMessage(5)"></div>
-        <div class="heart" id="heart6" onclick="revealMessage(6)"></div>
+    <!-- Circle Container -->
+    <div class="circle-container">
+        <div class="circle" id="circle1" onclick="revealMessage(1)">
+            <div class="circle-inner">1</div>
+            <div class="circle-inner back">Message 1: Hi, love! Happy monthsary. I'm being so careful with this po kasi kanina ko pa nasisira 'tong format and I'm having a hard time po.</div>
+        </div>
+        <div class="circle" id="circle2" onclick="revealMessage(2)">
+            <div class="circle-inner">2</div>
+            <div class="circle-inner back">Message 2: I just really want to impress you. But it's so hard that I cried while doing this po, love.</div>
+        </div>
+        <div class="circle" id="circle3" onclick="revealMessage(3)">
+            <div class="circle-inner">3</div>
+            <div class="circle-inner back">Message 3: I love you so much, love. Happy monthsary po. I hope you stay with me forever and never give up on me.</div>
+        </div>
+        <div class="circle" id="circle4" onclick="revealMessage(4)">
+            <div class="circle-inner">4</div>
+            <div class="circle-inner back">Message 4: I know that I'm so pasaway most of the time and I don't listen to you often. I'm so sorry about it love. Promise me, you won't leave me.</div>
+        </div>
+        <div class="circle" id="circle5" onclick="revealMessage(5)">
+            <div class="circle-inner">5</div>
+            <div class="circle-inner back">Message 5: Thank you for bearing with me all the time even though I'm so stubborn, you never let your anger eat you. I'm so proud of you, love.</div>
+        </div>
+        <div class="circle" id="circle6" onclick="revealMessage(6)">
+            <div class="circle-inner">6</div>
+            <div class="circle-inner back">Message 6: I love you more than words can say!I love you a lot!Let's celebrate lots of monthsaries together, okay?</div>
+        </div>
     </div>
-
-    <!-- Message Display Area -->
-    <div class="message" id="message1">Message 1: You’re the light of my life!</div>
-    <div class="message" id="message2">Message 2: My world is brighter with you. Thank you for being my sunshine!</div>
-    <div class="message" id="message3">Message 3: I’m so lucky to have you by my side.</div>
-    <div class="message" id="message4">Message 4: Thank you for being amazing! Your support means the world to me.</div>
-    <div class="message" id="message5">Message 5: You make my heart smile every day!</div>
-    <div class="message" id="message6">Message 6: I love you more than words can say! You are my everything.</div>
 
     <script>
         function revealMessage(number) {
-            // Hide the heart that was clicked
-            const heart = document.getElementById('heart' + number);
-            heart.classList.add('hidden');
+            const circle = document.getElementById('circle' + number);
+            circle.classList.toggle('flipped'); // Flip the circle
 
             // Show the corresponding message
-            const message = document.getElementById('message' + number);
-            message.classList.add('visible');
+            const message = circle.querySelector('.back');
+            message.style.display = message.style.display === 'block' ? 'none' : 'block';
 
             // Hide the message after 10 seconds
             setTimeout(function() {
-                message.classList.remove('visible');
+                message.style.display = 'none';
+                circle.classList.remove('flipped'); // Reset circle after 10 seconds
             }, 10000);
         }
     </script>
