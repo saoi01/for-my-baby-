@@ -16,59 +16,82 @@
             flex-direction: column;
         }
 
+        /* Ribbon Styling */
+        .ribbon {
+            width: 100%;
+            height: 20px;
+            background-color: #ff99bb;
+            position: absolute;
+            top: 10px;
+        }
+
+        .ribbon-bottom {
+            width: 100%;
+            height: 20px;
+            background-color: #ff99bb;
+            position: absolute;
+            bottom: 10px;
+        }
+
         /* Heart Styling */
         .heart-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 50px;
-            justify-content: top;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 50px;
         }
 
         .heart {
-            width: 40px;
-            height: 40px;
+            width: 100px;
+            height: 100px;
             position: relative;
             background-color: #ffccde;
             margin: 10px;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, opacity 0.5s ease;
         }
 
         .heart:before, .heart:after {
             content: "";
             position: absolute;
             top: 0;
-            width: 60px;
-            height: 60px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             background-color: #ffccde;
         }
 
         .heart:before {
-            left: 60px;
+            left: 50px;
         }
 
         .heart:after {
-            top: 60px;
+            top: 50px;
         }
 
         .heart:hover {
             transform: scale(1.1);
         }
 
+        .hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
         /* Message Styling */
         .message {
             display: none;
-            font-size: 20px;
+            font-size: 18px;
             text-align: center;
             padding: 20px;
             background-color: #fff;
             color: #ff477e;
             border: 2px solid #ffccde;
-            margin-top: 20px;
+            margin-top: 10px;
             border-radius: 10px;
-            max-width: 100%;
-            max-height: 100px;
+            max-width: 90%;
+            max-height: 200px;
             overflow-y: auto; /* Add scroll for long messages */
         }
 
@@ -79,40 +102,41 @@
 </head>
 <body>
 
+    <!-- Decorative Ribbons -->
+    <div class="ribbon"></div>
+    <div class="ribbon-bottom"></div>
+
     <!-- Heart Container -->
     <div class="heart-container">
-        <div class="heart" onclick="showMessage(1)"></div>
-        <div class="heart" onclick="showMessage(2)"></div>
-        <div class="heart" onclick="showMessage(3)"></div>
-        <div class="heart" onclick="showMessage(4)"></div>
-        <div class="heart" onclick="showMessage(5)"></div>
-        <div class="heart" onclick="showMessage(6)"></div>
-        <div class="heart" onclick="showMessage(7)"></div>
-        <div class="heart" onclick="showMessage(8)"></div>
-        <div class="heart" onclick="showMessage(9)"></div>
+        <div class="heart" id="heart1" onclick="revealMessage(1)"></div>
+        <div class="heart" id="heart2" onclick="revealMessage(2)"></div>
+        <div class="heart" id="heart3" onclick="revealMessage(3)"></div>
+        <div class="heart" id="heart4" onclick="revealMessage(4)"></div>
+        <div class="heart" id="heart5" onclick="revealMessage(5)"></div>
+        <div class="heart" id="heart6" onclick="revealMessage(6)"></div>
     </div>
 
     <!-- Message Display Area -->
-    <div class="message" id="message1">Message 1: Hi, love! Happy monthsary. I'm being so careful with this po kasi kanina ko pa nasisira 'tong format and I'm having a hard time po.</div>
-    <div class="message" id="message2">Message 2: I just really want to impress you. But it's so hard that I cried while doing this po, love. Anyway, I did my best, okay? I just don't know how things work here, so, I'm sorry if I disappointed you, love. I will try harder next time, promise.</div>
-    <div class="message" id="message3">Message 3: I love you so much, love. Happy monthsary po. I hope you stay with me forever and never give up on me.</div>
-    <div class="message" id="message4">Message 4: I know that I'm so pasaway most of the time and I don't listen to you often. I'm so sorry about it love. Promise me, you won't leave me.</div>
-    <div class="message" id="message5">Message 5: Thank you for bearing with me all the time even though I'm so stubborn, you never let your anger eat you. I'm so proud of you, love.</div>
-    <div class="message" id="message6">Message 6: I love you more than words can say!I love you a lot!</div>
-    <div class="message" id="message7">Message 7: Let's celebrate lots of monthsaries together, okay?</div>
-    <div class="message" id="message8">Message 8: Can I ask one favor po? Don't judge this, please. I've been editing and doing this and that since 1:00 pm</div>
-    <div class="message" id="message9">Message 9: IYou always make me feel loved and special. I want to do the same thing to you. I'm sorry if this turned out so bad, love. I love you a lot!</!</div>
+    <div class="message" id="message1">Message 1: You’re the light of my life!</div>
+    <div class="message" id="message2">Message 2: My world is brighter with you.</div>
+    <div class="message" id="message3">Message 3: I’m so lucky to have you.</div>
+    <div class="message" id="message4">Message 4: Thank you for being amazing!</div>
+    <div class="message" id="message5">Message 5: You make my heart smile.</div>
+    <div class="message" id="message6">Message 6: I love you more than words can say!</div>
 
     <script>
-        function showMessage(number) {
-            // Hide all messages first
-            var messages = document.querySelectorAll('.message');
-            messages.forEach(function(message) {
-                message.classList.remove('visible');
-            });
+        function revealMessage(number) {
+            // Hide the heart that was clicked
+            document.getElementById('heart' + number).classList.add('hidden');
 
-            // Show the selected message
-            document.getElementById('message' + number).classList.add('visible');
+            // Show the corresponding message
+            var message = document.getElementById('message' + number);
+            message.classList.add('visible');
+
+            // Hide the message after 10 seconds
+            setTimeout(function() {
+                message.classList.remove('visible');
+            }, 10000);
         }
     </script>
 
