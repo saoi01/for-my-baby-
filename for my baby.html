@@ -3,88 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>4 Pics 1 Word</title>
+    <title>Jar of Love Messages</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            text-align: center;
-            padding: 50px;
-        }
-        h1 {
-            color: #ff6347;
-        }
-        .pictures {
+            background-color: #ffe6f0;
             display: flex;
             justify-content: center;
-            margin: 20px 0;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
         }
-        .picture {
-            width: 100px;
-            height: 100px;
-            margin: 0 10px;
-            background-size: cover;
-            background-position: center;
+
+        .jar {
+            width: 250px;
+            height: 300px;
+            background-color: #fff;
+            border-radius: 50% 50% 0 0;
+            position: relative;
+            border: 5px solid #ffccde;
+            overflow: hidden;
         }
-        #message {
-            font-size: 24px;
-            margin-top: 20px;
-            color: #333;
-            display: none; /* Initially hidden */
-        }
-        #guessInput {
-            padding: 10px;
-            font-size: 18px;
-            margin-top: 20px;
-        }
-        #submitBtn {
-            padding: 10px 20px;
-            font-size: 18px;
-            background-color: #ff6347;
-            color: white;
-            border: none;
-            border-radius: 5px;
+
+        .paper {
+            width: 80%;
+            height: 50px;
+            background-color: #ffccde;
+            margin: 10px auto;
+            border-radius: 20px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
         }
-        #submitBtn:hover {
-            background-color: #ff4500;
+
+        .paper:hover {
+            background-color: #ff99bb;
+        }
+
+        .message {
+            display: none;
+            font-size: 18px;
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            color: #ff477e;
+            border: 2px solid #ffccde;
+            margin-top: 10px;
+            border-radius: 10px;
+        }
+
+        .visible {
+            display: block;
         }
     </style>
 </head>
 <body>
 
-    <h1>Guess the Word!</h1>
-    <div class="pictures">
-        <div class="picture" style="background-image: url('https://via.placeholder.com/100?text=Image1');"></div>
-        <div class="picture" style="background-image: url('https://via.placeholder.com/100?text=Image2');"></div>
-        <div class="picture" style="background-image: url('https://via.placeholder.com/100?text=Image3');"></div>
-        <div class="picture" style="background-image: url('https://via.placeholder.com/100?text=Image4');"></div>
+    <div class="jar">
+        <div class="paper" onclick="showMessage(1)">Paper 1</div>
+        <div class="paper" onclick="showMessage(2)">Paper 2</div>
+        <div class="paper" onclick="showMessage(3)">Paper 3</div>
+        <div class="paper" onclick="showMessage(4)">Paper 4</div>
+        <div class="paper" onclick="showMessage(5)">Paper 5</div>
+        <div class="paper" onclick="showMessage(6)">Paper 6</div>
+        <div class="paper" onclick="showMessage(7)">Paper 7</div>
+        <div class="paper" onclick="showMessage(8)">Paper 8</div>
+        <div class="paper" onclick="showMessage(9)">Paper 9</div>
     </div>
-    <input type="text" id="guessInput" placeholder="Type your guess here..." />
-    <button id="submitBtn">Submit Guess</button>
-    <div id="message"></div>
+
+    <div class="message" id="message1">Message 1: Hi, love! Happy monthsary. I'm being so careful with this po kasi kanina ko pa nasisira 'tong format and I'm having a hard time po.</div>
+    <div class="message" id="message2">Message 2: I just really want to impress you. But it's so hard that I cried while doing this po, love.</div>
+    <div class="message" id="message3">Message 3: I love you so much, love. Happy monthsary po. I hope you stay with me forever and never give up on me.</div>
+    <div class="message" id="message4">Message 4: I know that I'm so pasaway most of the time and I don't listen to you often. I'm so sorry about it love. Promise that me, you won't leave me.</div>
+    <div class="message" id="message5">Message 5: Thank you for bearing with me all the time even though I'm so stubborn, you never let your anger eat you. I'm so proud of you, love.</div>
+    <div class="message" id="message6">Message 6: I love you more than words can say!I love you a lot!</div>
+    <div class="message" id="message7">Message 7: Let's celebrate lots of monthsaries together, okay?</div>
+    <div class="message" id="message8">Message 8: Can I ask one favor po? Don't judge this, please. I've been editing and doing this and that since 1:00 pm.</div>
+    <div class="message" id="message9">Message 9: You always make me feel loved and special. I want to do the same thing to you. I'm sorry if this turn out so bad, love. I love you a lot!</div>
+
+
+
 
     <script>
-        const correctAnswer = "LOVE"; // The correct answer (you can change this)
-        const hiddenMessage = "I'm so sorry, love. I don't know how to use this kind of website, waaaa ˚‧º·(˚ ˃̣̣̥᷄⌓˂̣̣̥᷅ )‧º·˚ But, I'm trying po. I wanted to create another way of how I can send you a letter po kasi and I have decided to use this website. What do you think, love? Am I doing great? ˶ᵔ ᵕ ᵔ˶ I hope I'm doing great, love. I'm trying to understand these things going on here, I have no idea. hopefully, I'll be able to finish this and make this letter meaningful to you. I'm happy everytime na ginagawan mo 'ko ng mga gantong gifts for our monthsary. For me, it's hard to do this kaya I'm amazed at how your mind works. For me, you're a genius. I know na you won't agree and will probably tell me na wala lang 'yon, simple lang naman 'yon kasi IT student ako, bla bla bla. But of course, that's not the case for me po. I know you're an IT student pero I never knew na this simple task for you could be so complicated for someone like me.
-Anyway, I don't know how this works, AHHHHHHHHHHH! I'm so stupid :< ahm, well...happy monthsary, love! I hope that you're happy today and had a great day sa school po. I know na you're tired by now. so, I hope this letter makes you feel special. I tried my best not to google this one and learn this bit by bit with my stock knowledge from IT01. But I still can't do this right. I just want to say that I'm happy to celebrate something every month with you. This is a dream that I wish to continue every month even at the last moment of my breath. I know that you already know how much I'm cherishing and will keep cherishing you. I will do everything to make this relationship work. I want you to be the last person I will love for the rest of my life.
-Thank you, my love, for doing everything you can to make me feel loved and cared for. Even when you are sick, tired, sleepy, hungry, thirsty, lazy, and busy, you still do things for me so I won't feel sad. I notice everything you do for me and each time you do something for me, I feel extra special. I never knew that someone could love me as much as you do. It's something that can make me cry every time I think of it. Please bear with me, love, if sometimes I'm difficult to deal with. I know that sometimes I'm a burden to you and you just endure it. Thank you for all the patience you're pouring into our relationship. This month has been a rollercoaster of emotions for us. There are times when we don't understand each other, times when we're just happy and feel so loved, and times when we miss each other very much. But at the end of the day, I hope that we won't forget that our love for each other is what makes those emotions go round and round like a ferris wheel.
-Happy monthsary, love! I hope to celebrate every monthsary and anniversary with you and to reach every milestone in life with you. I want to cry at every failure and laugh at every achievement with you. I want to spend every day with you, whether in life or the afterlife. Let's watch horror movies every All Souls Day, see the twinkling lights every Christmas Day, and watch fireworks light up the dark sky every New Year. Let's fill each other's hearts with love every Valentine's Day, and light each other's candles every month on our birthdays. Let's be together for the rest of our lives so we can celebrate every day, even without occasions. Just being in love every day is worth celebrating.
-Each month is a treasure because it begins with you by my side, making every moment magical. ⸜(｡˃ ᵕ ˂ )⸝♡ I love you so much, my love. Life is difficult, indeed. Please remind yourself that every day, you are loved by me. I am always proud of you. In any situation, you can run on me. Kapag mabigat na, sa'kin ka tatakbo ha? Sa'kin ka lalapit, mahal ko ha? I'm always grateful to wake up every day with you in my heart and mind. I might be forgetful but, my heart will always remind my whole existence that I love you. And so, I will choose you in every lifetime. I will choose to love you every day. I will choose to love every part of you. I will choose to love you despite pains. I will always choose you in a room full of people. In a world full of people. It will always be you. I love you very much, love. I love you a lot♡
-; // The message to reveal
+        function showMessage(number) {
+            // Hide all messages first
+            var messages = document.querySelectorAll('.message');
+            messages.forEach(function(message) {
+                message.classList.remove('visible');
+            });
 
-        document.getElementById('submitBtn').onclick = function() {
-            const userGuess = document.getElementById('guessInput').value.toUpperCase();
-            const messageDiv = document.getElementById('message');
-
-            if (userGuess === correctAnswer) {
-                messageDiv.innerText = hiddenMessage; // Reveal the hidden message
-            } else {
-                messageDiv.innerText = "Oops! Try again.";
-            }
-            messageDiv.style.display = "block"; // Show the message
-        };
+            // Show the selected message
+            document.getElementById('message' + number).classList.add('visible');
+        }
     </script>
 
 </body>
