@@ -73,6 +73,8 @@
             align-items: center;
             width: 100px;
             height: 100px;
+            backface-visibility: hidden; /* Hides the front side */
+            text-align: center;
         }
 
         /* Message Styling */
@@ -137,19 +139,19 @@
     <script>
         function revealMessage(number) {
             const circle = document.getElementById('circle' + number);
+            const backMessage = circle.querySelector('.back');
             circle.classList.toggle('flipped'); // Flip the circle
 
-            // Show the corresponding message for a limited time
-            const message = circle.querySelector('.back');
+            // Show the corresponding message
+            backMessage.style.display = 'flex'; // Display the message
+            backMessage.style.justifyContent = 'center'; // Center the message
+            backMessage.style.alignItems = 'center'; // Center the message
 
             // Hide the message after 10 seconds
             setTimeout(function() {
-                message.style.display = 'none';
+                backMessage.style.display = 'none'; // Hide the message
                 circle.classList.remove('flipped'); // Reset circle after 10 seconds
             }, 10000);
-
-            // Show the message immediately
-            message.style.display = 'flex'; // Display the message
         }
     </script>
 
