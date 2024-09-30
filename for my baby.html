@@ -49,18 +49,30 @@
             margin: 10px;
             cursor: pointer;
             transition: transform 0.6s ease;
-            background-color: #ffccde;
             border-radius: 50%; /* Circle shape */
             display: flex;
             justify-content: center;
             align-items: center;
+            background-color: #ffccde;
             color: #ff477e;
             font-size: 24px; /* Font size for number */
+            backface-visibility: hidden; /* Hides the back side */
         }
 
-        .hidden {
-            opacity: 0;
-            pointer-events: none;
+        .back {
+            background-color: #fff; /* Back color of the circle */
+            color: #ff477e;
+            border: 2px solid #ffccde;
+            border-radius: 50%; /* Circular shape */
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: rotateY(180deg); /* Back side rotated */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100px;
+            height: 100px;
         }
 
         /* Message Styling */
@@ -86,24 +98,6 @@
         .flipped {
             transform: rotateY(180deg); /* Flipping effect */
         }
-
-        .circle-inner {
-            position: absolute;
-            backface-visibility: hidden; /* Hides the back side */
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .back {
-            background-color: #fff; /* Back color of the circle */
-            color: #ff477e;
-            border: 2px solid #ffccde;
-            border-radius: 50%; /* Circular shape */
-            transform: rotateY(180deg); /* Back side rotated */
-        }
     </style>
 </head>
 <body>
@@ -115,28 +109,28 @@
     <!-- Circle Container -->
     <div class="circle-container">
         <div class="circle" id="circle1" onclick="revealMessage(1)">
-            <div class="circle-inner">1</div>
-            <div class="circle-inner back">Message 1: Hi, love! Happy monthsary. I'm being so careful with this po kasi kanina ko pa nasisira 'tong format and I'm having a hard time po.</div>
+            <div>1</div>
+            <div class="back">Message 1: You’re the light of my life!</div>
         </div>
         <div class="circle" id="circle2" onclick="revealMessage(2)">
-            <div class="circle-inner">2</div>
-            <div class="circle-inner back">Message 2: I just really want to impress you. But it's so hard that I cried while doing this po, love.</div>
+            <div>2</div>
+            <div class="back">Message 2: My world is brighter with you.</div>
         </div>
         <div class="circle" id="circle3" onclick="revealMessage(3)">
-            <div class="circle-inner">3</div>
-            <div class="circle-inner back">Message 3: I love you so much, love. Happy monthsary po. I hope you stay with me forever and never give up on me.</div>
+            <div>3</div>
+            <div class="back">Message 3: I’m so lucky to have you.</div>
         </div>
         <div class="circle" id="circle4" onclick="revealMessage(4)">
-            <div class="circle-inner">4</div>
-            <div class="circle-inner back">Message 4: I know that I'm so pasaway most of the time and I don't listen to you often. I'm so sorry about it love. Promise me, you won't leave me.</div>
+            <div>4</div>
+            <div class="back">Message 4: Thank you for being amazing!</div>
         </div>
         <div class="circle" id="circle5" onclick="revealMessage(5)">
-            <div class="circle-inner">5</div>
-            <div class="circle-inner back">Message 5: Thank you for bearing with me all the time even though I'm so stubborn, you never let your anger eat you. I'm so proud of you, love.</div>
+            <div>5</div>
+            <div class="back">Message 5: You make my heart smile.</div>
         </div>
         <div class="circle" id="circle6" onclick="revealMessage(6)">
-            <div class="circle-inner">6</div>
-            <div class="circle-inner back">Message 6: I love you more than words can say!I love you a lot!Let's celebrate lots of monthsaries together, okay?</div>
+            <div>6</div>
+            <div class="back">Message 6: I love you more than words can say!</div>
         </div>
     </div>
 
@@ -145,15 +139,17 @@
             const circle = document.getElementById('circle' + number);
             circle.classList.toggle('flipped'); // Flip the circle
 
-            // Show the corresponding message
+            // Show the corresponding message for a limited time
             const message = circle.querySelector('.back');
-            message.style.display = message.style.display === 'block' ? 'none' : 'block';
 
             // Hide the message after 10 seconds
             setTimeout(function() {
                 message.style.display = 'none';
                 circle.classList.remove('flipped'); // Reset circle after 10 seconds
             }, 10000);
+
+            // Show the message immediately
+            message.style.display = 'flex'; // Display the message
         }
     </script>
 
